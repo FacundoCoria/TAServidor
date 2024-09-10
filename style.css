@@ -1,0 +1,305 @@
+/* Estilos básicos (Mobile First) */
+
+/* Estilo general del body */
+body {
+  background-color: #E6E6FA; 
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Evita el desplazamiento horizontal en móviles */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* Botones */
+.toggle-dark-mode-btn, 
+.agregar-btn { 
+  background-color: #6a5acd; 
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.toggle-dark-mode-btn:hover,
+.agregar-btn:hover {
+  background-color: #483d8b; 
+}
+
+.toggle-dark-mode-btn {
+  align-self: flex-start;
+}
+
+.editar-modal-btn{
+  background-color: #6a5acd; 
+  color: rgb(255, 255, 255);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de columnas */
+.row {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en móviles */
+  gap: 10px;
+  margin: 10px;
+}
+
+.column {
+  background-color: #dc8abb;
+  border-radius: 8px;
+  min-height: 400px;
+  max-height: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  overflow-y: auto; /* Scroll vertical dentro de cada columna */
+}
+
+.column h2 {
+  text-align: center;
+}
+
+.column-container {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  overflow-y: hidden; /* Evita el desplazamiento vertical */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+
+/* Tarjetas de tarea */
+.task-container {
+  min-height: 300px;
+}
+
+.task { 
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  cursor: move;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task[data-priority="Low"] {
+  background-color: #90EE90;
+}
+
+
+.task[data-priority="Medium"] {
+  background-color: #FFFFE0;
+}
+
+.task[data-priority="High"] {
+  background-color: #f67862;
+}
+
+.task .close {
+  color: white;
+  cursor: pointer;
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Estilo del modal */
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(227, 117, 187, 0.347);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+  background-color: #e98ceb;
+  color: #9723b4; 
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ef65ed;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.modal .agregar-modal-btn {
+  background-color: #6a5acd;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal .editar-modal-btn {
+  background-color: #5a7ecd;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+  color: #ffffff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(170, 83, 141);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Inputs y selectores */
+input[type="text"],
+textarea,
+select,
+input[type="date"] {
+  background-color: #f0e6fa;
+  border: 1px solid #6a5acd;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #483d8b;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus,
+input[type="date"]:focus {
+  border-color: #483d8b;
+  outline: none;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #582e61; 
+  color: #070707;
+}
+
+body.dark-mode .header, 
+body.dark-mode .column {
+  background-color: #863b87;
+}
+
+body.dark-mode .task[data-priority="baja"] {
+  background-color: #90EE90;
+}
+
+body.dark-mode .modal-content {
+  background-color: #823970;
+  color: #0f0f0f;
+}
+
+body.dark-mode .agregar-btn {
+  background-color: #852a73;
+  color: #FFFFFF;
+}
+
+body.dark-mode .agregar-btn:hover {
+  background-color: #702f64;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Distribuye los botones a los extremos */
+  padding: 10px;
+}
+
+.toggle-dark-mode-btn, 
+.agregar-btn { /* Aplica el mismo estilo a ambos botones */
+  background-color: #6a5acd; 
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px; 
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-dark-mode-btn:hover,
+.agregar-btn:hover {
+  background-color: #483d8b; 
+}
+
+.toggle-dark-mode-btn {
+  align-self: flex-start; /* Alinea el botón de modo oscuro a la izquierda */
+}
+
+/* Media Queries */
+@media (min-width: 426px) {
+  .agregar-btn {
+    position: static; /* Vuelve a ser estático a partir de 426px */
+  }
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta a columnas flexibles */
+    gap: 20px;
+  }
+
+  .modal-content {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .column {
+    min-height: auto;
+  }
+
+  input[type="text"],
+  textarea,
+  select,
+  input[type="date"] {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px){
+  .row {
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas en pantallas grandes */
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .column-container {
+    overflow-x: auto; /* Permite el desplazamiento horizontal en pantallas grandes */
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas en pantallas grandes */
+    gap: 20px;
+    min-width: 100px; /* Asegura que el grid sea lo suficientemente ancho para habilitar el desplazamiento */
+  }
+}

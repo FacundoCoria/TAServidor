@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Board</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <button class="toggle-dark-mode-btn" id="darkModeToggle" onclick="toggleDarkMode()">Modo Oscuro</button>
+        <button class="agregar-btn" onclick="openAgregarModal()">Agregar</button>
+    </div>
+
+    <div class="row">
+        <div class="column" data-status="Backlog">
+            <h2>Backlog</h2>
+            <div id="backlog-list" class="task-container" ondrop="drop(event, 'Backlog')" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="column" data-status="To Do">
+            <h2>To Do</h2>
+            <div id="to-do-list" class="task-container" ondrop="drop(event, 'To Do')" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="column" data-status="In Progress">
+            <h2>In Progress</h2>
+            <div id="in-progress-list" class="task-container" ondrop="drop(event, 'In Progress')" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="column" data-status="Blocked">
+            <h2>Blocked</h2>
+            <div id="blocked-list" class="task-container" ondrop="drop(event, 'Blocked')" ondragover="allowDrop(event)"></div>
+        </div>
+
+        <div class="column" data-status="Done">
+            <h2>Done</h2>
+            <div id="done-list" class="task-container" ondrop="drop(event, 'Done')" ondragover="allowDrop(event)"></div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar tarea -->
+    <div id="agregarModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAgregarModal()">&times;</span>
+            <h2>Agregar tarea</h2>
+            <form id="addTaskForm" onsubmit="addTask(); event.preventDefault();">
+                <label for="title">Título:</label>
+                <input type="text" name="title" id="title"><br><br>
+                <span id="tituloError" style="color: red;"></span><br><br>
+
+                <label for="description">Descripción:</label>
+                <textarea name="description" id="description"></textarea><br><br>
+
+                <label for="assignedTo">Asignado:</label>
+                <input type="text" name="assignedTo" id="assignedTo"><br><br>
+
+                <label for="priority">Prioridad:</label>
+                <select name="priority" id="priority">
+                    <option value="Low">Baja</option>
+                    <option value="Medium">Media</option>
+                    <option value="High">Alta</option>
+                </select><br><br>
+
+                <label for="status">Estado:</label>
+                <select name="status" id="status">
+                    <option value="Backlog">Backlog</option>
+                    <option value="To Do">To do</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Blocked">Blocked</option>
+                    <option value="Done">Done</option>
+                </select><br><br>
+
+                <label for="deadline">Fecha límite:</label>
+                <input type="date" name="deadline" id="deadline"><br><br>
+
+                <button type="submit" class="agregar-modal-btn">Agregar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para editar tarea -->
+    <div id="Editar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Editar tarea</h2>
+            <form id="editTaskForm" onsubmit="editTask(); event.preventDefault();">
+                <label for="editTaskTitle">Título:</label>
+                <input type="text" id="editTaskTitle" placeholder="Título de la tarea">
+                <span id="editTituloError" style="color: red;"></span><br><br>
+
+                <label for="editTaskDescription">Descripción:</label>
+                <textarea name="description" id="editTaskDescription"></textarea><br><br>
+
+                <label for="editTaskAssigned">Asignado:</label>
+                <input type="text" id="editTaskAssigned"><br><br>
+
+                <label for="editTaskPriority">Prioridad:</label>
+                <select name="priority" id="editTaskPriority">
+                    <option value="Low">Baja</option>
+                    <option value="Medium">Media</option>
+                    <option value="High">Alta</option>
+                </select><br><br>
+
+                <label for="editTaskStatus">Estado:</label>
+                <select name="status" id="editTaskStatus">
+                    <option value="Backlog">Backlog</option>
+                    <option value="To Do">To do</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Blocked">Blocked</option>
+                    <option value="Done">Done</option>
+                </select><br><br>
+
+                <label for="editTaskDueDate">Fecha límite:</label>
+                <input type="date" id="editTaskDueDate"><br><br>
+
+                <button type="submit" class="editar-modal-btn">Editar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="resultado"></div>
+</body>
+</html>
